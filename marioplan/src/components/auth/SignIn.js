@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux';
-import {signIn} from '../../store/actions/authActions';
+
+import { connect } from 'react-redux'
+import { signIn } from '../../store/actions/authActions'
 
 
 class SignIn extends Component {
@@ -18,7 +19,9 @@ class SignIn extends Component {
     this.props.signIn(this.state)
   }
   render() {
-    const {authError} = this.props
+
+    const { authError } = this.props;
+
     return (
       <div className="container">
         <form className="white">
@@ -32,9 +35,11 @@ class SignIn extends Component {
             <input type="password" id='password' onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0" onClick={this.handleSubmit}>Login</button>
+
+            <button className="btn pink lighten-1 z-depth-0">Login</button>
             <div className="center red-text">
-              {authError ? <p>{authError}</p>:null  }
+              { authError ? <p>{authError}</p> : null }
+
             </div>
           </div>
         </form>
@@ -43,16 +48,18 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = (state) =>{
+
+const mapStateToProps = (state) => {
   return{
-    authError: state.auth.authError,
+    authError: state.auth.authError
   }
 }
 
-const mapDispatchToProps = dispatch =>{
-return {
-  signIn: (creds) => dispatch(signIn(creds))
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds))
+  }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+
